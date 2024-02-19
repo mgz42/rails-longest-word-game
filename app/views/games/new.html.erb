@@ -1,0 +1,13 @@
+<h1>New Game</h1>
+
+<div class="d-flex mt-5">
+<% @letters.each do |letter| %>
+<div class="block-letter"><%= letter.upcase %></div>
+<% end %>
+</div>
+
+<form class="d-flex w-50" action="/score" data-turbo="false">
+  <input class="form-control" type="text" name="myWord">
+  <input class="btn btn-primary" type="submit" value="Enter my word">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= hidden_field_tag :allLetters, @letters.join(",") %> </form>
